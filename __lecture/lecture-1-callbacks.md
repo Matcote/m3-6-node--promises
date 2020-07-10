@@ -55,11 +55,14 @@ What is a callback?
 ---
 
 ```js
-console.log('do first thing');
-console.log('do second thing');
-console.log('do third thing');
+console.log("do first thing");
+console.log("do second thing");
+console.log("do third thing");
 
 // expected output
+// do first thing
+// do second thing
+// do third thing
 ```
 
 _What is expected here?_
@@ -71,11 +74,16 @@ What happens if the second thing takes longer than expected?
 ---
 
 ```js
-console.log('do first thing');
+console.log("do first thing");
 setTimeout(() => {
-  console.log('do second thing');
+  console.log("do second thing");
 }, 2000);
-console.log('do third thing');
+console.log("do third thing");
+
+// output
+// do first thing
+// do third thing
+// do second thing
 ```
 
 ---
@@ -94,7 +102,7 @@ const writeStory = (topic) => {
   alert(`Begin writing a story about ${topic}`);
 };
 
-writeStory('traveling to Mars');
+writeStory("traveling to Mars");
 ```
 
 ---
@@ -105,8 +113,8 @@ const writeStory = (topic, callback) => {
   callback();
 };
 
-writeStory('traveling to Mars', function () {
-  alert('Done! Time to submit it.');
+writeStory("traveling to Mars", function () {
+  alert("Done! Time to submit it.");
 });
 ```
 
@@ -131,6 +139,23 @@ const tellWorld = (message, callback) => {
   console.log(message);
   callback();
 };
+
+tellWorld(
+  "welcome",
+  tellWorld(
+    "this is my story",
+    tellworld(
+      "It is just the beginning",
+      tellWorld(
+        "And could go on forever",
+        tellWorld(
+          "but it might kill me to tell it this way",
+          console.log("done")
+        )
+      )
+    )
+  )
+);
 ```
 
 ---
