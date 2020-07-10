@@ -11,9 +11,7 @@ const getPositionFromAddress = (address) => {
   };
 
   // return something...
-  return opencage
-    .geocode(requestObj)
-    .then((data) => data.results[0].annotations.DMS);
+  return opencage.geocode(requestObj).then((data) => data.results[0].geometry);
 };
 
 getPositionFromAddress(
@@ -22,3 +20,5 @@ getPositionFromAddress(
 getPositionFromAddress(
   "5200 Avenue Rosedale, Montréal, QC H4V 2H6"
 ).then((response) => console.log(response));
+
+module.exports = { getPositionFromAddress };
